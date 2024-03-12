@@ -43,17 +43,18 @@ class _OneWidgetState extends State<OneWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.02, 0.57),
+                alignment: const AlignmentDirectional(0.02, 0.57),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    Navigator.of(context).pushNamed('TWO');
+                    Navigator.of(context).pushNamed('/two');
                   },
                   text: 'Ingresar',
                   options: FFButtonOptions(
                     width: 200,
                     height: 50,
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                    iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                     color: FlutterFlowTheme.of(context).primaryText,
                     textStyle:
                         FlutterFlowTheme.of(context).titleMedium.override(
@@ -69,7 +70,7 @@ class _OneWidgetState extends State<OneWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.01, -0.18),
+                alignment: const AlignmentDirectional(-0.01, -0.18),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(24),
                   child: Image.asset(

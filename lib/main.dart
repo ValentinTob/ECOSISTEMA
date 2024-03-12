@@ -1,13 +1,23 @@
-import 'package:EcosistemaPersonal/saludo_widget.dart';
+import 'package:EcosistemaPersonal/menu_perfil_widget.dart';
+import 'package:EcosistemaPersonal/perfil_widget.dart';
 import 'package:flutter/material.dart';
 import 'one_widget.dart';
+import 'perfil_model.dart';
 import 'two_widget.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => PerfilModel(), // Crear una instancia de PerfilModel
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,9 +29,10 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => OneWidget(),
-        'TWO': (context) => TwoWidget(),
-        'THREE': (context) => SaludoWidget() // Definir la ruta 'THREE'
+        '/': (context) => const OneWidget(),
+        '/two': (context) => const TwoWidget(),
+        '/perfil': (context) => const PerfilWidget(),
+        '/perfil_menu': (context) => const MenuPerfilWidget(),
       },
     );
   }

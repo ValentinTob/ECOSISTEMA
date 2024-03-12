@@ -65,7 +65,7 @@ class _TwoWidgetState extends State<TwoWidget> with TickerProviderStateMixin {
 
     // Agregar un retraso de 3 segundos antes de navegar a otro modelo y widget
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.of(context).pushNamed('THREE');
+      Navigator.of(context).pushNamed('/perfil');
     });
   }
 
