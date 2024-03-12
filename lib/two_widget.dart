@@ -1,12 +1,9 @@
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 import 'two_model.dart';
 export 'two_model.dart';
-
 
 // HOLA COMENTARIO
 
@@ -65,6 +62,11 @@ class _TwoWidgetState extends State<TwoWidget> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _model = createModel(context, () => TwoModel());
+
+    // Agregar un retraso de 3 segundos antes de navegar a otro modelo y widget
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.of(context).pushNamed('THREE');
+    });
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:EcosistemaPersonal/saludo_widget.dart';
 import 'package:flutter/material.dart';
 import 'one_widget.dart';
 import 'two_widget.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => OneWidget(),
         'TWO': (context) => TwoWidget(),
+        'THREE': (context) => SaludoWidget() // Definir la ruta 'THREE'
       },
     );
   }
