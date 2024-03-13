@@ -9,14 +9,14 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => PerfilModel(), // Crear una instancia de PerfilModel
-      child: MyApp(),
+      create: (context) => PerfilModel(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const OneWidget(),
         '/two': (context) => const TwoWidget(),
-        '/perfil': (context) => const PerfilWidget(),
+        '/perfil': (context) => PerfilWidget(
+            model: Provider.of<PerfilModel>(
+                context)), // Pasar la instancia de PerfilModel
         '/perfil_menu': (context) => const MenuPerfilWidget(),
       },
     );

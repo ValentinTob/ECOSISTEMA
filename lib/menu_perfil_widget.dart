@@ -1,43 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:provider/provider.dart';
 import 'perfil_model.dart';
 
-class MenuPerfilWidget extends StatelessWidget {
-  const MenuPerfilWidget({super.key});
+class MenuPerfilWidget extends StatefulWidget {
+  const MenuPerfilWidget({Key? key}) : super(key: key);
+
+  @override
+  _MenuPerfilWidgetState createState() => _MenuPerfilWidgetState();
+}
+
+class _MenuPerfilWidgetState extends State<MenuPerfilWidget> {
+  late List<String> _checkboxGroupValues = [];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Perfil:',
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8.0),
-          Consumer<PerfilModel>(
-            builder: (context, perfilModel, _) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Nombre: ${perfilModel.nombre}',
-                    style: const TextStyle(fontSize: 16.0),
-                  ),
-                  Text(
-                    'Edad: ${perfilModel.edad}',
-                    style: const TextStyle(fontSize: 16.0),
-                  ),
-                ],
-              );
-            },
+    final animationsMap = {
+      'textOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effects: [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: Duration.zero,
+            duration: const Duration(milliseconds: 1000),
+            begin: 0,
+            end: 1,
           ),
         ],
+      ),
+      'checkboxGroupOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effects: [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: Duration.zero,
+            duration: const Duration(milliseconds: 1000),
+            begin: const Offset(0, 50),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    };
+
+    return Scaffold(
+      body: Align(
+        alignment: Alignment.center,
+        child: Container(
+          width: 200, // Modifica el ancho según tus necesidades
+          height: 200, // Modifica la altura según tus necesidades
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+          child: Image.asset(
+            'assets/images/foto (1).jpg',
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
