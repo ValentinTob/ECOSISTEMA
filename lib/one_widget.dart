@@ -1,5 +1,6 @@
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +49,7 @@ class _OneWidgetState extends State<OneWidget> {
                 alignment: AlignmentDirectional(0.02, 0.57),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    Navigator.of(context).pushNamed('TWO');
+                    context.pushNamed('TWO');
                   },
                   text: 'Ingresar',
                   options: FFButtonOptions(
@@ -60,6 +61,7 @@ class _OneWidgetState extends State<OneWidget> {
                     textStyle:
                         FlutterFlowTheme.of(context).titleMedium.override(
                               fontFamily: 'Readex Pro',
+                              color: FlutterFlowTheme.of(context).tertiary,
                               fontWeight: FontWeight.w500,
                             ),
                     elevation: 0,
