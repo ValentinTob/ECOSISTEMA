@@ -2,7 +2,7 @@ import 'package:EcosistemaPersonal/three_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
-import 'package:go_router/go_router.dart' show GoRouterHelper, kTransitionInfoKey;
+import 'package:go_router/go_router.dart' show GoRouterHelper;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -240,7 +240,7 @@ class _TwoWidgetState extends State<TwoWidget> with TickerProviderStateMixin {
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(
-                      'THREE',
+                      '/THREE',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,

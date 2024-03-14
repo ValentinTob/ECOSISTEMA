@@ -133,7 +133,7 @@ class _FourWidgetState extends State<FourWidget> with TickerProviderStateMixin {
                   alignment: AlignmentDirectional(-0.01, 0.78),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed('PERFIL');
+                      context.pushNamed('/PERFIL');
                     },
                     text: 'ENVIAR',
                     options: FFButtonOptions(

@@ -49,7 +49,7 @@ class _OneWidgetState extends State<OneWidget> {
                 alignment: AlignmentDirectional(0.02, 0.57),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed('TWO');
+                    GoRouter.of(context).go('/TWO');
                   },
                   text: 'Ingresar',
                   options: FFButtonOptions(

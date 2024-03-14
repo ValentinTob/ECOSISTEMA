@@ -197,7 +197,7 @@ class _ThreeWidgetState extends State<ThreeWidget>
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(
-                      'FOUR',
+                      '/FOUR',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
