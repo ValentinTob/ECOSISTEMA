@@ -18,11 +18,15 @@ class _Perfil1State extends State<Perfil1> {
   int _edad = 0;
 
   @override
-  Future<void> initState() async {
+  void initState() {
     super.initState();
-    _usuarioHelper = UsuarioHelper(await DbHelper.database);
+    _initializeUsuarioHelper(); // Inicializar UsuarioHelper antes de cargar el perfil
+  }
 
-    _cargarPerfil();
+  Future<void> _initializeUsuarioHelper() async {
+    final database = await widget.dbHelper.database;
+    _usuarioHelper = UsuarioHelper(database);
+    _cargarPerfil(); // Llamar a cargarPerfil() después de inicializar UsuarioHelper
   }
 
   Future<void> _cargarPerfil() async {

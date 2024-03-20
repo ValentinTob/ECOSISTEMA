@@ -3,17 +3,23 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DbHelper {
-  static late Database _database;
+  late Database _database;
 
-  static Future<Database> get database async {
-    if (_database != null) {
+  DbHelper() {
+    _openDatabase().then((db) {
+      _database = db;
+    });
+  }
+
+  Future<Database> get database async {
+    if (_database.isOpen) {
       return _database;
     }
     _database = await _openDatabase();
     return _database;
   }
 
-  static Future<Database> _openDatabase() async {
+  Future<Database> _openDatabase() async {
     return openDatabase(join(await getDatabasesPath(), 'ecosistema.db'),
         onCreate: (db, version) {
       return db.execute(
@@ -21,7 +27,7 @@ class DbHelper {
     }, version: 1);
   }
 
-  static Future<List<Usuario>> getUsuariosQry() async {
+  Future<List<Usuario>> getUsuariosQry() async {
     Database db = await database;
     final List<Map<String, dynamic>> usuariosMap = await db.query("usuarios");
     return List.generate(
@@ -32,7 +38,7 @@ class DbHelper {
             nombre: usuariosMap[i]["nombre"]));
   }
 
-  static Future<void> agregarUsuario(String nombre, int edad) async {
+  Future<void> agregarUsuario(String nombre, int edad) async {
     final db = await database;
     await db.insert(
       'usuarios',
@@ -41,13 +47,13 @@ class DbHelper {
     );
   }
 
-  static Future<void> mostrar() async {
+  Future<void> mostrar() async {
     final db = await database;
     final data = await db.query('usuarios');
     print(data);
   }
 
-  static Future<void> borrarTodo() async {
+  Future<void> borrarTodo() async {
     final db = await database;
     await db.delete('usuarios');
   }

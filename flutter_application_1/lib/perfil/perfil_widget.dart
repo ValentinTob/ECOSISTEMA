@@ -62,7 +62,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
               onPressed: () async {
                 final String nombre = _nombreController.text;
                 final int edad = int.tryParse(_edadController.text) ?? 0;
-                await DbHelper.agregarUsuario(nombre, edad);
+                await _dbHelper.agregarUsuario(nombre, edad);
 
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => Perfil1(
@@ -73,9 +73,15 @@ class _PerfilWidgetState extends State<PerfilWidget> {
             ),
             ElevatedButton(
               onPressed: () async {
-                DbHelper.mostrar();
+                _dbHelper.mostrar();
               },
               child: const Text('Mostrar'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                _dbHelper.borrarTodo();
+              },
+              child: const Text('Borrar todos'),
             )
           ],
         ),
