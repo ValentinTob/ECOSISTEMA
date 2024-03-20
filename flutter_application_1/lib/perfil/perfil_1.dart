@@ -43,21 +43,28 @@ class _Perfil1State extends State<Perfil1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Perfil 1'),
+        title: Text('Perfil'),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage('assets/user.png'),
+            ),
+            SizedBox(height: 16),
             Text(
               'Nombre: $_nombre',
-              style: const TextStyle(fontSize: 18.0),
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 16.0),
+            SizedBox(height: 8),
             Text(
               'Edad: $_edad',
-              style: const TextStyle(fontSize: 18.0),
+              style: TextStyle(fontSize: 18.0),
             ),
           ],
         ),
