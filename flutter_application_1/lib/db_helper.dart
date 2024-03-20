@@ -1,20 +1,27 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_application_1/models/usuarios_model.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class DbHelper {
   late Database _database;
 
   DbHelper() {
-    _openDatabase().then((db) {
-      _database = db;
-    });
+    _initializeDatabase();
+  }
+
+  Future<void> _initializeDatabase() async {
+    databaseFactory = databaseFactoryFfi;
+    _database = await _openDatabase();
   }
 
   Future<Database> get database async {
+    // Verificar si la base de datos está abierta y devolverla
     if (_database.isOpen) {
       return _database;
     }
+    // Si no está abierta, abrir la base de datos y devolverla
     _database = await _openDatabase();
     return _database;
   }

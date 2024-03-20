@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db_helper.dart';
 import 'package:flutter_application_1/helpers/usuario_helper.dart';
@@ -43,7 +45,7 @@ class _Perfil1State extends State<Perfil1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perfil'),
+        title: const Text('Perfil'),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -52,19 +54,20 @@ class _Perfil1State extends State<Perfil1> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage('assets/user.png'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               'Nombre: $_nombre',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              style:
+                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               'Edad: $_edad',
-              style: TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0),
             ),
           ],
         ),
