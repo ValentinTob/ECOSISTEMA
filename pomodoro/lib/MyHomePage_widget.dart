@@ -31,8 +31,7 @@ class MyHomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20), // Bordes redondeados
                   image: const DecorationImage(
-                    image: AssetImage(
-                        'images/magnetismo.png'), // Ruta de la imagen
+                    image: AssetImage('images/fisica.jpg'), // Ruta de la imagen
                     fit: BoxFit.cover, // Ajuste de la imagen
                   ),
                 ),

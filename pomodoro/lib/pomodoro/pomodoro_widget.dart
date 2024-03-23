@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class PomodoroWidget extends StatefulWidget {
   const PomodoroWidget({super.key});
@@ -66,11 +67,11 @@ class _PomodoroWidgetState extends State<PomodoroWidget>
     setState(() {
       _isRunning = false;
       if (_selectedOption == 'Pomodoro') {
-        _timerDuration = const Duration(minutes: 1);
+        _timerDuration = const Duration(minutes: 25);
       } else if (_selectedOption == 'Short Break') {
-        _timerDuration = const Duration(seconds: 5);
+        _timerDuration = const Duration(minutes: 5);
       } else if (_selectedOption == 'Long Break') {
-        _timerDuration = const Duration(seconds: 15);
+        _timerDuration = const Duration(minutes: 15);
       }
     });
     _timer.cancel();
@@ -80,9 +81,9 @@ class _PomodoroWidgetState extends State<PomodoroWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pomodoro'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        elevation: 0,
+        title: const Text(
+          'Volver',
+        ),
       ),
       body: Stack(
         children: [
@@ -93,6 +94,11 @@ class _PomodoroWidgetState extends State<PomodoroWidget>
                 fit: BoxFit.cover,
               ),
             ),
+          ),
+          Container(
+            color: Colors.red.withOpacity(0.5),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
           ),
           Container(
             color: Colors.red

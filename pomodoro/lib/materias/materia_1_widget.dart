@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/pomodoro/pomodoro_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Materia1Widget extends StatelessWidget {
   const Materia1Widget({super.key});
@@ -34,11 +35,36 @@ class Materia1Widget extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text(
-          'Contenido de la materia Física',
-          style: TextStyle(fontSize: 24),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Center(
+            child: Text(
+              'Contenido de la materia Física',
+              style: TextStyle(fontSize: 24),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              const String notionUrl =
+                  'https://www.notion.so/F-sica-2-6c291d8320ac4e38abac5f31bec6c650';
+              // ignore: deprecated_member_use
+              launch(notionUrl);
+            },
+            child: Container(
+              width: 100,
+              height: 100,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.transparent,
+              ),
+              padding: const EdgeInsets.all(12),
+              child: Image.asset(
+                'images/notion.png',
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
